@@ -1,0 +1,271 @@
+[
+  {
+    "id": "git-status-short",
+    "title": "Voir l’état d’un dépôt Git",
+    "description": "Lister brièvement les fichiers modifiés, indexés ou non suivis.",
+    "keywords": [
+      "git status",
+      "fichiers changés dépôt",
+      "état working tree",
+      "modifications Git"
+    ],
+    "category": "Git et GitHub",
+    "distributions": [
+      "linux"
+    ],
+    "commands": [
+      "git status --short --branch"
+    ],
+    "explanation": "Affiche la branche et un résumé des changements locaux. Le statut peut contenir des noms de fichiers sensibles; aucune donnée n’est envoyée au réseau.",
+    "risk": "low",
+    "prerequisites": [
+      "Dossier situé dans un dépôt Git."
+    ],
+    "requires_admin": false,
+    "destructive": false,
+    "effects": [],
+    "sources": [
+      "https://git-scm.com/docs/git-status"
+    ]
+  },
+  {
+    "id": "git-log-recent",
+    "title": "Afficher les derniers commits Git",
+    "description": "Consulter les cinq commits récents sous forme compacte.",
+    "keywords": [
+      "historique commits",
+      "git log oneline",
+      "derniers changements Git",
+      "journal dépôt"
+    ],
+    "category": "Git et GitHub",
+    "distributions": [
+      "linux"
+    ],
+    "commands": [
+      "git log -5 --oneline"
+    ],
+    "explanation": "Affiche les cinq commits accessibles depuis HEAD avec leur résumé. Ne modifie pas le dépôt.",
+    "risk": "low",
+    "prerequisites": [
+      "Dossier situé dans un dépôt Git avec au moins un commit."
+    ],
+    "requires_admin": false,
+    "destructive": false,
+    "effects": [],
+    "sources": [
+      "https://git-scm.com/docs/git-log"
+    ]
+  },
+  {
+    "id": "git-diff-stat",
+    "title": "Résumer les changements Git non indexés",
+    "description": "Voir quels fichiers diffèrent du dernier état indexé et le volume des changements.",
+    "keywords": [
+      "git diff stat",
+      "résumé changements",
+      "fichiers modifiés Git",
+      "taille diff"
+    ],
+    "category": "Git et GitHub",
+    "distributions": [
+      "linux"
+    ],
+    "commands": [
+      "git diff --stat"
+    ],
+    "explanation": "Résume le diff du répertoire de travail par rapport à l’index. Les changements déjà indexés nécessitent git diff --cached.",
+    "risk": "low",
+    "prerequisites": [
+      "Dossier situé dans un dépôt Git."
+    ],
+    "requires_admin": false,
+    "destructive": false,
+    "effects": [],
+    "sources": [
+      "https://git-scm.com/docs/git-diff"
+    ]
+  },
+  {
+    "id": "git-show-head",
+    "title": "Résumer le dernier commit Git",
+    "description": "Afficher le commit courant et les fichiers qu’il a modifiés.",
+    "keywords": [
+      "git show head",
+      "dernier commit",
+      "résumé commit",
+      "fichiers modifiés commit"
+    ],
+    "category": "Git et GitHub",
+    "distributions": [
+      "linux"
+    ],
+    "commands": [
+      "git show --stat --oneline HEAD"
+    ],
+    "explanation": "Affiche le résumé et les statistiques du commit pointé par HEAD sans modifier l’historique.",
+    "risk": "low",
+    "prerequisites": [
+      "Dossier situé dans un dépôt avec un commit."
+    ],
+    "requires_admin": false,
+    "destructive": false,
+    "effects": [],
+    "sources": [
+      "https://git-scm.com/docs/git-show"
+    ]
+  },
+  {
+    "id": "git-current-branch",
+    "title": "Afficher la branche Git courante",
+    "description": "Obtenir le nom de la branche active.",
+    "keywords": [
+      "git branche actuelle",
+      "branch name",
+      "git branch show-current",
+      "nom branche"
+    ],
+    "category": "Git et GitHub",
+    "distributions": [
+      "linux"
+    ],
+    "commands": [
+      "git branch --show-current"
+    ],
+    "explanation": "Affiche la branche courante; une sortie vide peut indiquer un HEAD détaché.",
+    "risk": "low",
+    "prerequisites": [
+      "Dossier situé dans un dépôt Git."
+    ],
+    "requires_admin": false,
+    "destructive": false,
+    "effects": [],
+    "sources": [
+      "https://git-scm.com/docs/git-branch"
+    ]
+  },
+  {
+    "id": "git-search-source",
+    "title": "Rechercher un motif dans les fichiers suivis par Git",
+    "description": "Chercher une chaîne dans les fichiers suivis du dépôt.",
+    "keywords": [
+      "git grep",
+      "chercher texte code",
+      "recherche dans dépôt",
+      "trouver symbole"
+    ],
+    "category": "Git et GitHub",
+    "distributions": [
+      "linux"
+    ],
+    "commands": [
+      "git grep -n MOTIF"
+    ],
+    "explanation": "Remplacez MOTIF par une chaîne ou expression régulière. git grep examine les fichiers suivis selon l’arbre de travail et affiche les lignes correspondantes.",
+    "risk": "low",
+    "prerequisites": [
+      "Dossier situé dans un dépôt Git."
+    ],
+    "requires_admin": false,
+    "destructive": false,
+    "effects": [
+      "La sortie peut révéler des chaînes sensibles présentes dans le code."
+    ],
+    "sources": [
+      "https://git-scm.com/docs/git-grep"
+    ]
+  },
+  {
+    "id": "git-unstage-file",
+    "title": "Retirer un fichier de l’index Git",
+    "description": "Annuler le staging d’un fichier tout en conservant ses modifications locales.",
+    "keywords": [
+      "git unstage",
+      "git restore staged",
+      "enlever index",
+      "défaire git add"
+    ],
+    "category": "Git et GitHub",
+    "distributions": [
+      "linux"
+    ],
+    "commands": [
+      "git restore --staged CHEMIN"
+    ],
+    "explanation": "Remplacez CHEMIN par le fichier concerné. Cette opération retire son contenu de l’index sans effacer les modifications du répertoire de travail.",
+    "risk": "medium",
+    "prerequisites": [
+      "Dossier situé dans un dépôt Git."
+    ],
+    "requires_admin": false,
+    "destructive": false,
+    "effects": [
+      "Modifie l’index Git, mais conserve les changements locaux du fichier."
+    ],
+    "sources": [
+      "https://git-scm.com/docs/git-restore"
+    ]
+  },
+  {
+    "id": "git-fetch-remotes",
+    "title": "Récupérer les références distantes Git",
+    "description": "Télécharger les nouvelles références distantes sans intégrer les changements dans la branche courante.",
+    "keywords": [
+      "git fetch",
+      "récupérer changements remote",
+      "actualiser branches distantes",
+      "mise à jour dépôt distant"
+    ],
+    "category": "Git et GitHub",
+    "distributions": [
+      "linux"
+    ],
+    "commands": [
+      "git fetch --all --prune"
+    ],
+    "explanation": "Contacte les dépôts distants configurés et met à jour les références de suivi; --prune retire des références locales de suivi devenues absentes du distant, sans supprimer les branches locales.",
+    "risk": "medium",
+    "prerequisites": [
+      "Dépôt Git avec remote configuré et accès réseau."
+    ],
+    "requires_admin": false,
+    "destructive": false,
+    "effects": [
+      "Réseau utilisé; références distantes locales actualisées."
+    ],
+    "sources": [
+      "https://git-scm.com/docs/git-fetch"
+    ]
+  },
+  {
+    "id": "git-undo-last-commit",
+    "title": "Annuler le dernier commit en gardant les modifications",
+    "description": "Revenir d'un commit en arrière en conservant les changements dans l'index.",
+    "keywords": [
+      "annuler commit",
+      "git reset soft",
+      "dernier commit",
+      "undo commit"
+    ],
+    "category": "Git et GitHub",
+    "distributions": [
+      "linux"
+    ],
+    "commands": [
+      "git reset --soft HEAD~1"
+    ],
+    "explanation": "Déplace la branche courante d'un commit en arrière et conserve les modifications dans l'index : aucun fichier n'est perdu. L'historique local est réécrit, donc ne l'utilisez pas si le commit a déjà été publié et partagé; préférez alors un nouveau commit de correction.",
+    "risk": "medium",
+    "prerequisites": [
+      "Être dans un dépôt Git."
+    ],
+    "requires_admin": false,
+    "destructive": false,
+    "effects": [
+      "Réécrit l'historique local de la branche courante d'un commit."
+    ],
+    "sources": [
+      "https://git-scm.com/docs/git-reset"
+    ]
+  }
+]

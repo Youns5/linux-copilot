@@ -1,0 +1,236 @@
+[
+  {
+    "id": "fedora-refresh-upgrade",
+    "title": "Mettre à jour Fedora",
+    "description": "Actualiser les métadonnées et appliquer les mises à jour disponibles.",
+    "keywords": [
+      "mettre à jour",
+      "actualiser Fedora",
+      "upgrade",
+      "dnf upgrade",
+      "système à jour"
+    ],
+    "category": "Fedora",
+    "distributions": [
+      "fedora"
+    ],
+    "commands": [
+      "sudo dnf upgrade --refresh"
+    ],
+    "explanation": "--refresh force la vérification des métadonnées avant la mise à niveau. DNF affiche les paquets concernés et demande confirmation; un redémarrage peut être nécessaire pour le noyau.",
+    "risk": "medium",
+    "prerequisites": [
+      "Connexion réseau et dépôts configurés."
+    ],
+    "requires_admin": true,
+    "destructive": false,
+    "effects": [
+      "Modifie les paquets installés et peut nécessiter un redémarrage."
+    ],
+    "sources": [
+      "https://dnf.readthedocs.io/en/latest/command_ref.html"
+    ]
+  },
+  {
+    "id": "fedora-search-package",
+    "title": "Rechercher un paquet Fedora",
+    "description": "Chercher un logiciel dans les dépôts configurés.",
+    "keywords": [
+      "rechercher logiciel",
+      "trouver paquet",
+      "dnf search",
+      "application Fedora"
+    ],
+    "category": "Fedora",
+    "distributions": [
+      "fedora"
+    ],
+    "commands": [
+      "dnf search MOT_CLE"
+    ],
+    "explanation": "Remplacez MOT_CLE par un nom ou un terme descriptif. La commande interroge les métadonnées locales des dépôts; elle peut demander une actualisation si elles sont absentes.",
+    "risk": "low",
+    "prerequisites": [
+      "Dépôts DNF configurés."
+    ],
+    "requires_admin": false,
+    "destructive": false,
+    "effects": [],
+    "sources": [
+      "https://dnf.readthedocs.io/en/latest/command_ref.html"
+    ]
+  },
+  {
+    "id": "fedora-package-info",
+    "title": "Afficher les informations d’un paquet Fedora",
+    "description": "Consulter la description et les métadonnées d’un paquet disponible.",
+    "keywords": [
+      "dnf info",
+      "description paquet",
+      "version logiciel",
+      "informations paquet"
+    ],
+    "category": "Fedora",
+    "distributions": [
+      "fedora"
+    ],
+    "commands": [
+      "dnf info NOM_DU_PAQUET"
+    ],
+    "explanation": "Remplacez NOM_DU_PAQUET par le nom recherché. DNF affiche notamment le résumé, la version, le dépôt et l’architecture.",
+    "risk": "low",
+    "prerequisites": [
+      "Dépôts DNF configurés."
+    ],
+    "requires_admin": false,
+    "destructive": false,
+    "effects": [],
+    "sources": [
+      "https://dnf.readthedocs.io/en/latest/command_ref.html"
+    ]
+  },
+  {
+    "id": "fedora-list-installed",
+    "title": "Lister les paquets installés sur Fedora",
+    "description": "Afficher les paquets connus de la base RPM locale.",
+    "keywords": [
+      "paquets installés",
+      "logiciels présents",
+      "rpm query",
+      "liste applications"
+    ],
+    "category": "Fedora",
+    "distributions": [
+      "fedora"
+    ],
+    "commands": [
+      "rpm -qa"
+    ],
+    "explanation": "La commande interroge la base RPM locale et ne modifie pas le système. La sortie peut être longue; ajoutez un filtre à l’affichage si nécessaire.",
+    "risk": "low",
+    "prerequisites": [],
+    "requires_admin": false,
+    "destructive": false,
+    "effects": [],
+    "sources": [
+      "https://rpm.org/docs/4.20.x/man/rpm.8.html"
+    ]
+  },
+  {
+    "id": "fedora-find-package-owner",
+    "title": "Trouver le paquet propriétaire d’un fichier Fedora",
+    "description": "Identifier le paquet RPM qui a installé un fichier local.",
+    "keywords": [
+      "quel paquet fichier",
+      "rpm propriétaire",
+      "trouver origine fichier",
+      "package owns file"
+    ],
+    "category": "Fedora",
+    "distributions": [
+      "fedora"
+    ],
+    "commands": [
+      "rpm -qf /CHEMIN/DU/FICHIER"
+    ],
+    "explanation": "Remplacez le chemin par celui du fichier existant. Cette interrogation locale n’installe et ne supprime rien.",
+    "risk": "low",
+    "prerequisites": [
+      "Le fichier doit exister localement."
+    ],
+    "requires_admin": false,
+    "destructive": false,
+    "effects": [],
+    "sources": [
+      "https://rpm.org/docs/4.20.x/man/rpm.8.html"
+    ]
+  },
+  {
+    "id": "fedora-check-updates",
+    "title": "Vérifier les mises à jour Fedora disponibles",
+    "description": "Lister les mises à jour sans les installer.",
+    "keywords": [
+      "mises à jour disponibles",
+      "dnf check-update",
+      "vérifier updates",
+      "paquets à mettre à jour"
+    ],
+    "category": "Fedora",
+    "distributions": [
+      "fedora"
+    ],
+    "commands": [
+      "dnf check-update"
+    ],
+    "explanation": "DNF compare les versions installées aux métadonnées des dépôts. Un code de sortie non nul peut simplement signaler que des mises à jour existent.",
+    "risk": "low",
+    "prerequisites": [
+      "Dépôts DNF configurés; accès réseau si les métadonnées doivent être actualisées."
+    ],
+    "requires_admin": false,
+    "destructive": false,
+    "effects": [],
+    "sources": [
+      "https://dnf.readthedocs.io/en/latest/command_ref.html"
+    ]
+  },
+  {
+    "id": "fedora-install-brave",
+    "title": "Installer Brave depuis son dépôt Fedora",
+    "description": "Installer le navigateur Brave si son dépôt officiel est déjà configuré.",
+    "keywords": [
+      "installer Brave",
+      "navigateur brave Fedora",
+      "dnf brave-browser",
+      "ajouter navigateur"
+    ],
+    "category": "Fedora",
+    "distributions": [
+      "fedora"
+    ],
+    "commands": [
+      "sudo dnf install brave-browser"
+    ],
+    "explanation": "Cette commande installe le paquet depuis les dépôts déjà configurés; elle ne configure pas le dépôt Brave. Vérifiez d’abord les instructions officielles et contrôlez les paquets proposés par DNF.",
+    "risk": "medium",
+    "prerequisites": [
+      "Dépôt officiel Brave configuré selon sa documentation; accès réseau."
+    ],
+    "requires_admin": true,
+    "destructive": false,
+    "effects": [
+      "Ajoute Brave et ses dépendances au système."
+    ],
+    "sources": [
+      "https://brave.com/linux/",
+      "https://dnf.readthedocs.io/en/latest/command_ref.html"
+    ]
+  },
+  {
+    "id": "fedora-list-history",
+    "title": "Consulter l’historique DNF",
+    "description": "Afficher les transactions de paquets effectuées avec DNF.",
+    "keywords": [
+      "historique installation",
+      "dnf history",
+      "transactions paquets",
+      "dernières modifications"
+    ],
+    "category": "Fedora",
+    "distributions": [
+      "fedora"
+    ],
+    "commands": [
+      "dnf history list"
+    ],
+    "explanation": "La liste aide à retrouver les transactions récentes. Elle ne modifie pas les paquets; n’utilisez pas les sous-commandes d’annulation sans examiner leurs effets.",
+    "risk": "low",
+    "prerequisites": [],
+    "requires_admin": false,
+    "destructive": false,
+    "effects": [],
+    "sources": [
+      "https://dnf.readthedocs.io/en/latest/command_ref.html"
+    ]
+  }
+]

@@ -1,0 +1,180 @@
+[
+  {
+    "id": "automation-tar-create",
+    "title": "Créer une archive tar.gz",
+    "description": "Compresser un dossier dans une archive sans supprimer l’original.",
+    "keywords": [
+      "tar gz créer archive",
+      "compresser dossier Linux",
+      "sauvegarde fichiers tar",
+      "tar czf"
+    ],
+    "category": "Automatisation",
+    "distributions": [
+      "linux"
+    ],
+    "commands": [
+      "tar -czf ARCHIVE.tar.gz DOSSIER"
+    ],
+    "explanation": "Remplacez ARCHIVE.tar.gz et DOSSIER par les chemins voulus. Une archive existante de même nom peut être remplacée; contrôlez l’espace disponible avant l’opération.",
+    "risk": "medium",
+    "prerequisites": [
+      "Espace suffisant dans le dossier de destination."
+    ],
+    "requires_admin": false,
+    "destructive": true,
+    "effects": [
+      "Crée ou remplace le fichier d’archive; les sources restent en place."
+    ],
+    "sources": [
+      "https://www.gnu.org/software/tar/manual/html_node/create.html"
+    ]
+  },
+  {
+    "id": "automation-tar-list",
+    "title": "Lister le contenu d’une archive tar.gz",
+    "description": "Examiner les noms de fichiers archivés sans extraire l’archive.",
+    "keywords": [
+      "tar lister archive",
+      "contenu tar.gz",
+      "voir archive avant extraction",
+      "tar -tzf"
+    ],
+    "category": "Automatisation",
+    "distributions": [
+      "linux"
+    ],
+    "commands": [
+      "tar -tzf ARCHIVE.tar.gz"
+    ],
+    "explanation": "Remplacez le chemin par l’archive voulue. Cette commande liste les membres sans les écrire sur le disque; méfiez-vous des noms inhabituels avant une extraction ultérieure.",
+    "risk": "low",
+    "prerequisites": [
+      "Archive tar.gz existante."
+    ],
+    "requires_admin": false,
+    "destructive": false,
+    "effects": [],
+    "sources": [
+      "https://www.gnu.org/software/tar/manual/html_node/list.html"
+    ]
+  },
+  {
+    "id": "automation-rsync-dry-run",
+    "title": "Prévisualiser une synchronisation rsync",
+    "description": "Voir les changements envisagés sans écrire dans la destination.",
+    "keywords": [
+      "rsync simulation",
+      "dry run synchroniser",
+      "prévisualiser copie",
+      "sauvegarde rsync"
+    ],
+    "category": "Automatisation",
+    "distributions": [
+      "linux"
+    ],
+    "commands": [
+      "rsync -av --dry-run SOURCE/ DESTINATION/"
+    ],
+    "explanation": "Remplacez SOURCE et DESTINATION par les chemins appropriés. --dry-run simule l’opération; retirez cette option uniquement après examen, car une synchronisation réelle peut remplacer des fichiers.",
+    "risk": "low",
+    "prerequisites": [
+      "rsync installé; chemins vérifiés."
+    ],
+    "requires_admin": false,
+    "destructive": false,
+    "effects": [
+      "En mode actuel, affiche seulement les opérations envisagées."
+    ],
+    "sources": [
+      "https://man.archlinux.org/man/rsync.1"
+    ]
+  },
+  {
+    "id": "automation-watch-disk",
+    "title": "Surveiller l’espace disque périodiquement",
+    "description": "Rafraîchir l’affichage de l’espace des systèmes de fichiers toutes les deux secondes.",
+    "keywords": [
+      "watch df",
+      "surveiller stockage",
+      "espace disque en direct",
+      "monitor disque"
+    ],
+    "category": "Automatisation",
+    "distributions": [
+      "linux"
+    ],
+    "commands": [
+      "watch -n 2 df -h"
+    ],
+    "explanation": "Répète une commande de consultation jusqu’à interruption manuelle avec Ctrl+C. La commande répétée ici ne modifie pas les données.",
+    "risk": "low",
+    "prerequisites": [
+      "watch et df disponibles."
+    ],
+    "requires_admin": false,
+    "destructive": false,
+    "effects": [],
+    "sources": [
+      "https://man7.org/linux/man-pages/man1/watch.1.html",
+      "https://www.gnu.org/software/coreutils/manual/html_node/df-invocation.html"
+    ]
+  },
+  {
+    "id": "automation-date-iso",
+    "title": "Afficher la date au format ISO",
+    "description": "Obtenir une date et heure locale au format ISO 8601.",
+    "keywords": [
+      "date format ISO",
+      "horodatage script",
+      "date commande Linux",
+      "date -Is"
+    ],
+    "category": "Automatisation",
+    "distributions": [
+      "linux"
+    ],
+    "commands": [
+      "date --iso-8601=seconds"
+    ],
+    "explanation": "Affiche l’heure locale avec son décalage horaire. Cela ne change pas l’horloge système.",
+    "risk": "low",
+    "prerequisites": [],
+    "requires_admin": false,
+    "destructive": false,
+    "effects": [],
+    "sources": [
+      "https://www.gnu.org/software/coreutils/manual/html_node/date-invocation.html"
+    ]
+  },
+  {
+    "id": "automation-file-count",
+    "title": "Compter les fichiers d’un dossier",
+    "description": "Compter les fichiers ordinaires présents sous un chemin.",
+    "keywords": [
+      "nombre fichiers dossier",
+      "find wc count",
+      "compter documents",
+      "combien fichiers répertoire"
+    ],
+    "category": "Automatisation",
+    "distributions": [
+      "linux"
+    ],
+    "commands": [
+      "find DOSSIER -type f -print | wc -l"
+    ],
+    "explanation": "Remplacez DOSSIER par le répertoire à parcourir. Le comptage inclut les sous-répertoires et peut prendre du temps; les fichiers illisibles ne seront pas tous comptés.",
+    "risk": "low",
+    "prerequisites": [
+      "find et wc disponibles; droits de lecture."
+    ],
+    "requires_admin": false,
+    "destructive": false,
+    "effects": [],
+    "sources": [
+      "https://www.gnu.org/software/findutils/manual/html_mono/find.html",
+      "https://www.gnu.org/software/coreutils/manual/html_node/wc-invocation.html"
+    ]
+  }
+]

@@ -1,0 +1,186 @@
+[
+  {
+    "id": "cloud-aws-identity",
+    "title": "Vérifier l’identité AWS CLI active",
+    "description": "Afficher le compte et l’identité associés aux identifiants AWS courants.",
+    "keywords": [
+      "aws qui suis-je",
+      "aws sts identity",
+      "compte AWS actif",
+      "vérifier credentials"
+    ],
+    "category": "Cloud",
+    "distributions": [
+      "linux"
+    ],
+    "commands": [
+      "aws sts get-caller-identity"
+    ],
+    "explanation": "Effectue une requête de lecture à AWS STS. La réponse identifie le compte et le principal; ne la publiez pas sans vérifier qu’elle ne révèle pas d’informations sensibles.",
+    "risk": "low",
+    "prerequisites": [
+      "AWS CLI installé et profil configuré; accès réseau."
+    ],
+    "requires_admin": false,
+    "destructive": false,
+    "effects": [
+      "Contacte AWS et révèle l’identité du profil actif."
+    ],
+    "sources": [
+      "https://docs.aws.amazon.com/cli/latest/reference/sts/get-caller-identity.html"
+    ]
+  },
+  {
+    "id": "cloud-aws-s3-list",
+    "title": "Lister les objets d’un bucket S3",
+    "description": "Afficher le contenu d’un bucket AWS auquel le profil a accès.",
+    "keywords": [
+      "aws s3 ls",
+      "lister bucket cloud",
+      "fichiers S3",
+      "contenu stockage AWS"
+    ],
+    "category": "Cloud",
+    "distributions": [
+      "linux"
+    ],
+    "commands": [
+      "aws s3 ls s3://NOM_DU_BUCKET"
+    ],
+    "explanation": "Remplacez NOM_DU_BUCKET par une cible autorisée. Cette opération distante est en lecture seule mais révèle les noms et métadonnées d’objets accessibles.",
+    "risk": "medium",
+    "prerequisites": [
+      "AWS CLI configuré, droits de lecture sur le bucket et réseau."
+    ],
+    "requires_admin": false,
+    "destructive": false,
+    "effects": [
+      "Interroge AWS et affiche des métadonnées de stockage."
+    ],
+    "sources": [
+      "https://docs.aws.amazon.com/cli/latest/reference/s3/ls.html"
+    ]
+  },
+  {
+    "id": "cloud-gcloud-auth-list",
+    "title": "Vérifier les comptes authentifiés dans gcloud",
+    "description": "Lister les comptes connus du client Google Cloud CLI.",
+    "keywords": [
+      "gcloud auth list",
+      "compte Google Cloud actif",
+      "vérifier authentification cloud",
+      "identité gcloud"
+    ],
+    "category": "Cloud",
+    "distributions": [
+      "linux"
+    ],
+    "commands": [
+      "gcloud auth list"
+    ],
+    "explanation": "Affiche les comptes enregistrés et indique le compte actif. La sortie contient des identifiants de compte; aucune ressource cloud n’est modifiée.",
+    "risk": "low",
+    "prerequisites": [
+      "Google Cloud CLI installé."
+    ],
+    "requires_admin": false,
+    "destructive": false,
+    "effects": [
+      "Affiche des identifiants de comptes locaux."
+    ],
+    "sources": [
+      "https://cloud.google.com/sdk/gcloud/reference/auth/list"
+    ]
+  },
+  {
+    "id": "cloud-gcloud-project",
+    "title": "Afficher le projet gcloud courant",
+    "description": "Consulter la valeur de projet configurée pour Google Cloud CLI.",
+    "keywords": [
+      "gcloud projet actif",
+      "current project cloud",
+      "gcloud config get-value",
+      "projet Google Cloud"
+    ],
+    "category": "Cloud",
+    "distributions": [
+      "linux"
+    ],
+    "commands": [
+      "gcloud config get-value project"
+    ],
+    "explanation": "Affiche le projet par défaut du profil gcloud. Cette préférence locale ne prouve pas que le compte dispose d’autorisations sur ce projet.",
+    "risk": "low",
+    "prerequisites": [
+      "Google Cloud CLI installé."
+    ],
+    "requires_admin": false,
+    "destructive": false,
+    "effects": [],
+    "sources": [
+      "https://cloud.google.com/sdk/gcloud/reference/config/"
+    ]
+  },
+  {
+    "id": "cloud-azure-account",
+    "title": "Afficher le compte Azure CLI",
+    "description": "Consulter l’abonnement et le tenant associés à la session Azure CLI.",
+    "keywords": [
+      "az account show",
+      "compte Azure courant",
+      "abonnement cloud",
+      "vérifier Azure CLI"
+    ],
+    "category": "Cloud",
+    "distributions": [
+      "linux"
+    ],
+    "commands": [
+      "az account show --output table"
+    ],
+    "explanation": "Affiche les métadonnées du compte courant. L’appel utilise la session configurée; les identifiants de tenant et d’abonnement peuvent être sensibles.",
+    "risk": "low",
+    "prerequisites": [
+      "Azure CLI installé et session authentifiée."
+    ],
+    "requires_admin": false,
+    "destructive": false,
+    "effects": [
+      "Interroge Azure et affiche des identifiants d’abonnement."
+    ],
+    "sources": [
+      "https://learn.microsoft.com/en-us/cli/azure/account#az-account-show"
+    ]
+  },
+  {
+    "id": "cloud-kube-context",
+    "title": "Afficher le contexte Kubernetes courant",
+    "description": "Identifier le cluster et l’espace de noms par défaut sélectionnés par kubectl.",
+    "keywords": [
+      "kubectl contexte actuel",
+      "cluster Kubernetes courant",
+      "contexte kubeconfig",
+      "où pointe kubectl"
+    ],
+    "category": "Cloud",
+    "distributions": [
+      "linux"
+    ],
+    "commands": [
+      "kubectl config current-context"
+    ],
+    "explanation": "Lit le nom du contexte courant dans kubeconfig sans interroger ni modifier le cluster. Le nom peut contenir des identifiants d’environnement internes.",
+    "risk": "low",
+    "prerequisites": [
+      "kubectl installé et fichier kubeconfig disponible."
+    ],
+    "requires_admin": false,
+    "destructive": false,
+    "effects": [
+      "Affiche un nom de contexte potentiellement interne."
+    ],
+    "sources": [
+      "https://kubernetes.io/docs/reference/kubectl/generated/kubectl_config/kubectl_config_current-context/"
+    ]
+  }
+]

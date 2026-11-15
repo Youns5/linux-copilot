@@ -1,0 +1,489 @@
+[
+  {
+    "id": "network-addresses",
+    "title": "Afficher les adresses réseau",
+    "description": "Voir les adresses IP et états des interfaces locales.",
+    "keywords": [
+      "adresse IP locale",
+      "ip addr",
+      "interfaces réseau",
+      "voir IP"
+    ],
+    "category": "Réseau",
+    "distributions": [
+      "linux"
+    ],
+    "commands": [
+      "ip -brief address"
+    ],
+    "explanation": "Affiche les adresses et états des interfaces locales. La commande ne contacte aucun hôte distant.",
+    "risk": "low",
+    "prerequisites": [
+      "iproute2 installé."
+    ],
+    "requires_admin": false,
+    "destructive": false,
+    "effects": [],
+    "sources": [
+      "https://man7.org/linux/man-pages/man8/ip.8.html"
+    ]
+  },
+  {
+    "id": "network-routes",
+    "title": "Afficher la table de routage",
+    "description": "Consulter les routes IPv4 utilisées par le noyau.",
+    "keywords": [
+      "route par défaut",
+      "ip route",
+      "passerelle réseau",
+      "table routage"
+    ],
+    "category": "Réseau",
+    "distributions": [
+      "linux"
+    ],
+    "commands": [
+      "ip route"
+    ],
+    "explanation": "Affiche les routes connues localement et aide à identifier la passerelle par défaut. Cette consultation ne modifie pas le réseau.",
+    "risk": "low",
+    "prerequisites": [
+      "iproute2 installé."
+    ],
+    "requires_admin": false,
+    "destructive": false,
+    "effects": [],
+    "sources": [
+      "https://man7.org/linux/man-pages/man8/ip-route.8.html"
+    ]
+  },
+  {
+    "id": "network-open-ports",
+    "title": "Voir les ports en écoute",
+    "description": "Lister les sockets TCP et UDP locales en état d’écoute.",
+    "keywords": [
+      "ports ouverts",
+      "voir ports écoute",
+      "ss listening",
+      "services réseau locaux"
+    ],
+    "category": "Réseau",
+    "distributions": [
+      "linux"
+    ],
+    "commands": [
+      "ss -tuln"
+    ],
+    "explanation": "-t et -u sélectionnent TCP et UDP, -l les sockets en écoute et -n conserve les numéros. Cela inspecte uniquement la machine locale, pas les autres hôtes du réseau.",
+    "risk": "low",
+    "prerequisites": [
+      "iproute2 installé."
+    ],
+    "requires_admin": false,
+    "destructive": false,
+    "effects": [],
+    "sources": [
+      "https://man7.org/linux/man-pages/man8/ss.8.html"
+    ]
+  },
+  {
+    "id": "network-established-connections",
+    "title": "Lister les connexions TCP établies",
+    "description": "Examiner les connexions TCP actives de la machine.",
+    "keywords": [
+      "connexions actives",
+      "ss established",
+      "connexions TCP",
+      "voir sessions réseau"
+    ],
+    "category": "Réseau",
+    "distributions": [
+      "linux"
+    ],
+    "commands": [
+      "ss -tn state established"
+    ],
+    "explanation": "Affiche les connexions établies avec adresses et ports numériques. Les informations concernent la machine locale; l’accès aux détails de processus peut être limité.",
+    "risk": "low",
+    "prerequisites": [
+      "iproute2 installé."
+    ],
+    "requires_admin": false,
+    "destructive": false,
+    "effects": [],
+    "sources": [
+      "https://man7.org/linux/man-pages/man8/ss.8.html"
+    ]
+  },
+  {
+    "id": "network-neighbor-cache",
+    "title": "Consulter les voisins réseau connus",
+    "description": "Afficher le cache ARP ou NDP appris par le système local.",
+    "keywords": [
+      "table arp",
+      "ip neigh",
+      "voisins réseau",
+      "appareils vus localement"
+    ],
+    "category": "Réseau",
+    "distributions": [
+      "linux"
+    ],
+    "commands": [
+      "ip neigh show"
+    ],
+    "explanation": "Affiche les associations d’adresses locales récemment apprises. Ce n’est pas un scan réseau et le cache peut être incomplet ou ancien.",
+    "risk": "low",
+    "prerequisites": [
+      "iproute2 installé."
+    ],
+    "requires_admin": false,
+    "destructive": false,
+    "effects": [],
+    "sources": [
+      "https://man7.org/linux/man-pages/man8/ip-neighbour.8.html"
+    ]
+  },
+  {
+    "id": "network-nm-devices",
+    "title": "Consulter l’état des interfaces NetworkManager",
+    "description": "Voir si les interfaces sont connectées ou déconnectées.",
+    "keywords": [
+      "nmcli device",
+      "état wifi",
+      "interfaces NetworkManager",
+      "réseau connecté"
+    ],
+    "category": "Réseau",
+    "distributions": [
+      "linux"
+    ],
+    "commands": [
+      "nmcli device status"
+    ],
+    "explanation": "Affiche l’état des périphériques gérés par NetworkManager. La commande ne change aucune connexion.",
+    "risk": "low",
+    "prerequisites": [
+      "NetworkManager installé."
+    ],
+    "requires_admin": false,
+    "destructive": false,
+    "effects": [],
+    "sources": [
+      "https://networkmanager.pages.freedesktop.org/NetworkManager/NetworkManager/nmcli.html"
+    ]
+  },
+  {
+    "id": "network-active-connections",
+    "title": "Lister les connexions NetworkManager actives",
+    "description": "Afficher les profils de connexion actuellement utilisés.",
+    "keywords": [
+      "nmcli connexion active",
+      "profil wifi",
+      "connexions réseau utilisées",
+      "networkmanager show"
+    ],
+    "category": "Réseau",
+    "distributions": [
+      "linux"
+    ],
+    "commands": [
+      "nmcli connection show --active"
+    ],
+    "explanation": "Liste les profils actifs. Les noms de réseaux et paramètres peuvent être privés; ne partagez pas la sortie sans la relire.",
+    "risk": "low",
+    "prerequisites": [
+      "NetworkManager installé."
+    ],
+    "requires_admin": false,
+    "destructive": false,
+    "effects": [
+      "Peut révéler les noms des réseaux utilisés."
+    ],
+    "sources": [
+      "https://networkmanager.pages.freedesktop.org/NetworkManager/NetworkManager/nmcli.html"
+    ]
+  },
+  {
+    "id": "network-dns-status",
+    "title": "Afficher l’état du résolveur DNS",
+    "description": "Consulter les serveurs DNS et domaines de recherche par lien.",
+    "keywords": [
+      "serveur DNS",
+      "resolvectl status",
+      "problème résolution noms",
+      "configuration DNS"
+    ],
+    "category": "Réseau",
+    "distributions": [
+      "linux"
+    ],
+    "commands": [
+      "resolvectl status"
+    ],
+    "explanation": "Affiche la configuration connue de systemd-resolved. Certains systèmes utilisent un autre résolveur ou n’exposent pas cette commande.",
+    "risk": "low",
+    "prerequisites": [
+      "systemd-resolved actif."
+    ],
+    "requires_admin": false,
+    "destructive": false,
+    "effects": [],
+    "sources": [
+      "https://www.freedesktop.org/software/systemd/man/latest/resolvectl.html"
+    ]
+  },
+  {
+    "id": "network-ping-check",
+    "title": "Tester la connectivité vers une adresse IP",
+    "description": "Envoyer quatre requêtes ICMP vers une adresse publique de test.",
+    "keywords": [
+      "tester internet ping",
+      "connexion réseau fonctionne",
+      "ping adresse IP",
+      "perte paquets"
+    ],
+    "category": "Réseau",
+    "distributions": [
+      "linux"
+    ],
+    "commands": [
+      "ping -c 4 1.1.1.1"
+    ],
+    "explanation": "Envoie quatre paquets à l’adresse indiquée; un pare-feu peut bloquer ICMP même si Internet fonctionne. Remplacez l’adresse par une cible que vous êtes autorisé à joindre.",
+    "risk": "low",
+    "prerequisites": [
+      "Route réseau active."
+    ],
+    "requires_admin": false,
+    "destructive": false,
+    "effects": [
+      "Émet un petit nombre de paquets vers l’adresse cible."
+    ],
+    "sources": [
+      "https://man7.org/linux/man-pages/man8/ping.8.html"
+    ]
+  },
+  {
+    "id": "network-http-headers",
+    "title": "Vérifier la réponse HTTP d’un site",
+    "description": "Lire les en-têtes HTTP sans télécharger le corps de la page.",
+    "keywords": [
+      "curl headers",
+      "tester site web",
+      "réponse HTTP",
+      "vérifier serveur distant"
+    ],
+    "category": "Réseau",
+    "distributions": [
+      "linux"
+    ],
+    "commands": [
+      "curl --head --max-time 10 https://example.com"
+    ],
+    "explanation": "Envoie une requête HTTP HEAD à l’hôte indiqué et affiche ses en-têtes. Remplacez example.com par un service que vous êtes autorisé à consulter; les en-têtes peuvent identifier le client ou le serveur.",
+    "risk": "low",
+    "prerequisites": [
+      "curl installé et accès réseau."
+    ],
+    "requires_admin": false,
+    "destructive": false,
+    "effects": [
+      "Émet une requête réseau vers le site."
+    ],
+    "sources": [
+      "https://curl.se/docs/manpage.html"
+    ]
+  },
+  {
+    "id": "network-ssh-config-alias",
+    "title": "Configurer un alias de connexion SSH",
+    "description": "Créer une entrée client SSH nommée pour simplifier la connexion à un serveur connu.",
+    "keywords": [
+      "configurer connexion SSH",
+      "alias serveur ssh",
+      "fichier ssh config",
+      "connexion distante clé"
+    ],
+    "category": "Réseau",
+    "distributions": [
+      "linux"
+    ],
+    "commands": [
+      "nano ~/.ssh/config",
+      "ssh ALIAS"
+    ],
+    "explanation": "Dans ~/.ssh/config, ajoutez un bloc adapté : Host ALIAS\n  HostName NOM_DU_SERVEUR\n  User NOM_UTILISATEUR\n  IdentityFile ~/.ssh/id_ed25519\n  IdentitiesOnly yes\nRemplacez les valeurs et protégez ce fichier; ssh ALIAS initie ensuite une connexion distante.",
+    "risk": "medium",
+    "prerequisites": [
+      "OpenSSH client installé; serveur et compte autorisés; clé privée protégée."
+    ],
+    "requires_admin": false,
+    "destructive": false,
+    "effects": [
+      "Modifie la configuration SSH utilisateur et peut établir une connexion réseau."
+    ],
+    "sources": [
+      "https://man.openbsd.org/ssh_config.5",
+      "https://man.openbsd.org/ssh.1"
+    ]
+  },
+  {
+    "id": "network-ssh-keygen",
+    "title": "Créer une clé SSH Ed25519",
+    "description": "Générer une paire de clés pour l’authentification SSH par clé publique.",
+    "keywords": [
+      "générer clé SSH",
+      "ssh-keygen ed25519",
+      "créer clé publique",
+      "configurer authentification SSH"
+    ],
+    "category": "Réseau",
+    "distributions": [
+      "linux"
+    ],
+    "commands": [
+      "ssh-keygen -t ed25519 -C \"commentaire\""
+    ],
+    "explanation": "Remplacez le commentaire et choisissez un emplacement. La clé privée ne doit jamais être partagée; une phrase secrète protège le fichier privé en cas de copie non autorisée.",
+    "risk": "medium",
+    "prerequisites": [
+      "OpenSSH client installé."
+    ],
+    "requires_admin": false,
+    "destructive": false,
+    "effects": [
+      "Crée des fichiers de clé privée et publique dans le dossier SSH."
+    ],
+    "sources": [
+      "https://man.openbsd.org/ssh-keygen.1"
+    ]
+  },
+  {
+    "id": "network-ssh-copy-key",
+    "title": "Installer sa clé publique sur un serveur SSH",
+    "description": "Ajouter une clé publique au compte distant afin d’activer l’authentification par clé.",
+    "keywords": [
+      "ssh-copy-id",
+      "copier clé publique ssh",
+      "autoriser clé serveur",
+      "connexion sans mot de passe"
+    ],
+    "category": "Réseau",
+    "distributions": [
+      "linux"
+    ],
+    "commands": [
+      "ssh-copy-id -i ~/.ssh/id_ed25519.pub NOM_UTILISATEUR@NOM_DU_SERVEUR"
+    ],
+    "explanation": "Remplacez les valeurs par un compte et un serveur que vous administrez ou êtes autorisé à utiliser. Cette opération ajoute la clé publique au fichier authorized_keys distant; elle ne copie pas la clé privée.",
+    "risk": "medium",
+    "prerequisites": [
+      "Clé publique existante; ssh-copy-id installé; accès SSH initial autorisé."
+    ],
+    "requires_admin": false,
+    "destructive": false,
+    "effects": [
+      "Modifie les clés autorisées du compte distant et contacte le serveur."
+    ],
+    "sources": [
+      "https://man7.org/linux/man-pages/man1/ssh-copy-id.1.html"
+    ]
+  },
+  {
+    "id": "network-ssh-key-fingerprint",
+    "title": "Afficher l’empreinte d’une clé SSH publique",
+    "description": "Calculer l’empreinte d’une clé publique locale pour la comparer à une référence fiable.",
+    "keywords": [
+      "empreinte clé ssh",
+      "ssh-keygen -lf",
+      "fingerprint clé publique",
+      "vérifier clé"
+    ],
+    "category": "Réseau",
+    "distributions": [
+      "linux"
+    ],
+    "commands": [
+      "ssh-keygen -lf ~/.ssh/id_ed25519.pub"
+    ],
+    "explanation": "Affiche le type et l’empreinte de la clé publique. Vérifiez le chemin si votre clé porte un autre nom; ne publiez jamais le fichier de clé privée.",
+    "risk": "low",
+    "prerequisites": [
+      "Fichier de clé publique présent."
+    ],
+    "requires_admin": false,
+    "destructive": false,
+    "effects": [],
+    "sources": [
+      "https://man.openbsd.org/ssh-keygen.1"
+    ]
+  },
+  {
+    "id": "network-wifi-scan",
+    "title": "Lister les réseaux Wi-Fi détectés",
+    "description": "Afficher les réseaux Wi-Fi visibles autour de la machine.",
+    "keywords": [
+      "wifi",
+      "wi-fi",
+      "réseaux sans fil",
+      "scan wifi",
+      "nmcli wifi",
+      "wireless"
+    ],
+    "category": "Réseau",
+    "distributions": [
+      "linux"
+    ],
+    "commands": [
+      "nmcli device wifi list"
+    ],
+    "explanation": "Demande à NetworkManager de lister les réseaux Wi-Fi détectés par l'adaptateur local, avec force du signal, canal et sécurité. La commande ne modifie aucune connexion ni aucun réglage.",
+    "risk": "low",
+    "prerequisites": [
+      "NetworkManager actif.",
+      "Adaptateur Wi-Fi présent."
+    ],
+    "requires_admin": false,
+    "destructive": false,
+    "effects": [
+      "Déclenche une mesure passive des réseaux voisins; aucune configuration modifiée."
+    ],
+    "sources": [
+      "https://networkmanager.pages.freedesktop.org/NetworkManager/NetworkManager/nmcli.html"
+    ]
+  },
+  {
+    "id": "network-wifi-connect",
+    "title": "Se connecter à un réseau Wi-Fi",
+    "description": "Associer l'adaptateur Wi-Fi au réseau indiqué via NetworkManager.",
+    "keywords": [
+      "wifi",
+      "connexion wifi",
+      "se connecter réseau sans fil",
+      "nmcli connect"
+    ],
+    "category": "Réseau",
+    "distributions": [
+      "linux"
+    ],
+    "commands": [
+      "nmcli device wifi connect NOM_DU_RESEAU"
+    ],
+    "explanation": "Crée ou réutilise un profil NetworkManager pour le SSID indiqué puis s'y associe. Pour un réseau protégé, NetworkManager demande la phrase secrète en interactif; évitez de la coller sur la ligne de commande, où elle resterait dans l'historique du shell.",
+    "risk": "medium",
+    "prerequisites": [
+      "NetworkManager actif.",
+      "Adaptateur Wi-Fi présent."
+    ],
+    "requires_admin": false,
+    "destructive": false,
+    "effects": [
+      "Crée un profil de connexion dans la configuration locale de NetworkManager.",
+      "Établit une nouvelle association sans fil."
+    ],
+    "sources": [
+      "https://networkmanager.pages.freedesktop.org/NetworkManager/NetworkManager/nmcli.html"
+    ]
+  }
+]
